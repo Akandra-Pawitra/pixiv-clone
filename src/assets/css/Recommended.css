@@ -1,0 +1,20 @@
+#recommend {
+  margin-top: 30px;
+  margin-bottom: 76px;
+}
+
+.artrow-image {
+  height: 180px;
+}
+
+.artrow-image,
+.artrow-info,
+.artrow-title {
+  width: 180px;
+}
+
+
+.artrow-artist-profile {
+  width: 20px;
+  height: 20px;
+}
