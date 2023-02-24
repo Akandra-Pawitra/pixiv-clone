@@ -33,25 +33,48 @@ const getArtistName = (id: number): string => {
   }
 }
 
+const getArtistProfileRef = (id: number) => {
+  try {
+    const artist = artistMeta
+    const index = getArtistIndex(id)
+    const path = artist[index].pixiv.image
+    return (getRef(path))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const renderRow = (art: ArtMetadata): React.ReactNode => {
   useEffect(() => {
-    getDownloadURL(getRef(art.preview)).then((url) => {
+    const artRef = getRef(art.preview)
+    getDownloadURL(artRef).then((url) => {
       const id = `${art.id}-preview`
       const img = document.getElementById(id)
       img?.setAttribute('src', url)
     })
+
+    const profileRef = getArtistProfileRef(art.artist)
+    if (profileRef) {
+      getDownloadURL(profileRef).then((url) => {
+        const id = `${art.artist}-${art.id}`
+        const img = document.getElementById(id)
+        img?.setAttribute('src', url)
+      })
+    }
   }, [])
   return (
     <div key={art.id} className='artrow-item'>
       <div className='artrow-image `${art.id}-preview`'>
-        <img id={`${art.id}-preview`} className="curved-corner" alt={`art.id`} />
+        <img id={`${art.id}-preview`} className="curved-corner" alt={`${art.id}`} />
       </div>
       <div className='artrow-info'>
         <div className='artrow-title'>
           {art.title}
         </div>
         <div className='artrow-artist flex'>
-          <div className="artrow-artist-profile charcoal"></div>
+          <div className="artrow-artist-profile">
+            <img id={`${art.artist}-${art.id}`} />
+          </div>
           <div className="artrow-artist-name">
           {getArtistName(art.artist)}
           </div>
