@@ -4,7 +4,7 @@ const Artwork: React.FC = () => {
   return (
     <div>
       <Navigation />
-      <div>Artwork</div>
+      <main className="content">Artwork</main>
     </div>
   )
 }

@@ -4,7 +4,7 @@ const Redirect: React.FC = () => {
   return (
     <div>
       <Navigation />
-      <div>Redirect</div>
+      <main className="content">Redirect</main>
     </div>
   )
 }
