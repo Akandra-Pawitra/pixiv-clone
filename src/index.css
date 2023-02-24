@@ -19,6 +19,12 @@ body {
   padding: 0 100px;
 }
 
+div {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .content {
   margin-top: 16px;
 }
