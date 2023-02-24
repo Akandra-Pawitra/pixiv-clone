@@ -1,0 +1,77 @@
+nav {
+  display: flex;
+  height: 64px;
+}
+
+.nav-item {
+  height: 64px;
+}
+
+#logo {
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+}
+
+#search-container {
+  width: 400px;
+}
+
+#search-box {
+  width: 400px;
+  height: 40px;
+}
+
+#magnifier {
+  margin-left: 9px;
+  width: 40px;
+  height: 40px;
+}
+
+#magnifier img {
+  width: 20px;
+  height: 20px;
+}
+
+#search {
+  background-color: transparent;
+  font-size: 14px;
+  color: #d6d6d6;
+  border: none;
+  width: calc(100% - 49px);
+}
+
+#post-container {
+  margin-left: auto;
+  width: 180px;
+}
+
+#post-button {
+  font-weight: bold;
+  width: 150px;
+  height: 40px;
+  color: #d6d6d6;
+  border: none;
+  border-radius: 20px;
+}
+
+#inbox-container,
+#notif-container {
+  width: 40px;
+}
+
+#inbox,
+#notif {
+  width: 24px;
+  height: 24px;
+}
+
+#account-container {
+  width: 64px;
+}
+
+#account {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
