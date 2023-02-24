@@ -7,7 +7,7 @@
     "width": 850,
     "height": 478,
     "full": "/images/artworks/full/48395655.jpg",
-    "preview": "/images/artworks/full/48395655.jpg"
+    "preview": "/images/artworks/preview/48395655.jpg"
   },
   {
     "id": 64192372,
@@ -17,7 +17,7 @@
     "width": 850,
     "height": 286,
     "full": "/images/artworks/full/64192372.jpg",
-    "preview": "/images/artworks/full/64192372.jpg"
+    "preview": "/images/artworks/preview/64192372.jpg"
   },
   {
     "id": 67175703,
@@ -27,7 +27,7 @@
     "width": 602,
     "height": 850,
     "full": "/images/artworks/full/67175703.png",
-    "preview": "/images/artworks/full/67175703.png"
+    "preview": "/images/artworks/preview/67175703.png"
   },
   {
     "id": 71646603,
@@ -37,7 +37,7 @@
     "width": 850,
     "height": 601,
     "full": "/images/artworks/full/71646603.jpg",
-    "preview": "/images/artworks/full/71646603.jpg"
+    "preview": "/images/artworks/preview/71646603.jpg"
   },
   {
     "id": 79766575,
@@ -47,7 +47,7 @@
     "width": 850,
     "height": 435,
     "full": "/images/artworks/full/79766575.jpeg",
-    "preview": "/images/artworks/full/79766575.jpeg"
+    "preview": "/images/artworks/preview/79766575.jpeg"
   },
   {
     "id": 85672547,
@@ -57,7 +57,7 @@
     "width": 850,
     "height": 670,
     "full": "/images/artworks/full/85672547.jpg",
-    "preview": "/images/artworks/full/85672547.jpg"
+    "preview": "/images/artworks/preview/85672547.jpg"
   },
   {
     "id": 86036732,
@@ -67,7 +67,7 @@
     "width": 850,
     "height": 601,
     "full": "/images/artworks/full/86036732.jpg",
-    "preview": "/images/artworks/full/86036732.jpg"
+    "preview": "/images/artworks/preview/86036732.jpg"
   },
   {
     "id": 88091541,
@@ -77,7 +77,7 @@
     "width": 532,
     "height": 850,
     "full": "/images/artworks/full/88091541.jpg",
-    "preview": "/images/artworks/full/88091541.jpg"
+    "preview": "/images/artworks/preview/88091541.jpg"
   },
   {
     "id": 92076107,
@@ -87,7 +87,7 @@
     "width": 601,
     "height": 850,
     "full": "/images/artworks/full/92076107.jpg",
-    "preview": "/images/artworks/full/92076107.jpg"
+    "preview": "/images/artworks/preview/92076107.jpg"
   },
   {
     "id": 94484291,
@@ -97,7 +97,7 @@
     "width": 600,
     "height": 850,
     "full": "/images/artworks/full/94484291.jpg",
-    "preview": "/images/artworks/full/94484291.jpg"
+    "preview": "/images/artworks/preview/94484291.jpg"
   },
   {
     "id": 98655301,
@@ -107,7 +107,7 @@
     "width": 601,
     "height": 850,
     "full": "/images/artworks/full/98655301.jpg",
-    "preview": "/images/artworks/full/98655301.jpg"
+    "preview": "/images/artworks/preview/98655301.jpg"
   },
   {
     "id": 99508232,
@@ -117,7 +117,7 @@
     "width": 850,
     "height": 850,
     "full": "/images/artworks/full/99508232.jpg",
-    "preview": "/images/artworks/full/99508232.jpg"
+    "preview": "/images/artworks/preview/99508232.png"
   },
   {
     "id": 103554445,
@@ -127,7 +127,7 @@
     "width": 409,
     "height": 850,
     "full": "/images/artworks/full/103554445.png",
-    "preview": "/images/artworks/full/103554445.png"
+    "preview": "/images/artworks/preview/103554445.png"
   },
   {
     "id": 103680674,
@@ -137,7 +137,7 @@
     "width": 850,
     "height": 850,
     "full": "/images/artworks/full/103680674.png",
-    "preview": "/images/artworks/full/103680674.png"
+    "preview": "/images/artworks/preview/103680674.png"
   },
   {
     "id": 105029610,
@@ -147,7 +147,7 @@
     "width": 509,
     "height": 850,
     "full": "/images/artworks/full/105029610.jpg",
-    "preview": "/images/artworks/full/105029610.jpg"
+    "preview": "/images/artworks/preview/105029610.jpg"
   },
   {
     "id": 105565364,
@@ -157,7 +157,7 @@
     "width": 850,
     "height": 478,
     "full": "/images/artworks/full/105565364.jpg",
-    "preview": "/images/artworks/full/105565364.jpg"
+    "preview": "/images/artworks/preview/105565364.jpg"
   },
   {
     "id": 105580637,
@@ -167,7 +167,7 @@
     "width": 850,
     "height": 600,
     "full": "/images/artworks/full/105580637.jpg",
-    "preview": "/images/artworks/full/105580637.jpg"
+    "preview": "/images/artworks/preview/105580637.jpg"
   },
   {
     "id": 105618101,
@@ -177,6 +177,6 @@
     "width": 590,
     "height": 850,
     "full": "/images/artworks/full/105618101.jpg",
-    "preview": "/images/artworks/full/105618101.jpg"
+    "preview": "/images/artworks/preview/105618101.jpg"
   }
 ]

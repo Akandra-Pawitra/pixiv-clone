@@ -1,6 +1,13 @@
 import '../assets/css/Recommended.css'
 import artworkMeta from '../assets/metadata/artworks.json'
 import artistMeta from '../assets/metadata/artists.json'
+import { ref, getDownloadURL } from "firebase/storage"
+import { useEffect } from 'react'
+import { storage } from '../main'
+
+const getRef = (path: string) => {
+  return (ref(storage, path))
+}
 
 const getArtistIndex = (id: number): number => {
   let index = -1
@@ -27,25 +34,32 @@ const getArtistName = (id: number): string => {
 }
 
 const renderRow = (art: ArtMetadata): React.ReactNode => {
-    return (
-      <div key={art.id} className='artrow-item'>
-        <div className='artrow-image'>
-          <img alt={(art.id).toString()} />
+  useEffect(() => {
+    getDownloadURL(getRef(art.preview)).then((url) => {
+      const id = `${art.id}-preview`
+      const img = document.getElementById(id)
+      img?.setAttribute('src', url)
+    })
+  }, [])
+  return (
+    <div key={art.id} className='artrow-item'>
+      <div className='artrow-image `${art.id}-preview`'>
+        <img id={`${art.id}-preview`} className="curved-corner" alt={`art.id`} />
+      </div>
+      <div className='artrow-info'>
+        <div className='artrow-title'>
+          {art.title}
         </div>
-        <div className='artrow-info'>
-          <div className='artrow-title'>
-            {art.title}
-          </div>
-          <div className='artrow-artist flex'>
-            <div className="artrow-artist-profile charcoal"></div>
-            <div className="artrow-artist-name">
-            {getArtistName(art.artist)}
-            </div>
+        <div className='artrow-artist flex'>
+          <div className="artrow-artist-profile charcoal"></div>
+          <div className="artrow-artist-name">
+          {getArtistName(art.artist)}
           </div>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
+}
 
 const Recommended: React.FC = () => {
   const arr0 = artworkMeta.slice(0,6)
