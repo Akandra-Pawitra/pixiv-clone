@@ -33,6 +33,13 @@
   width: 100px;
 }
 
+.homepage-fav {
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  height: 32px;
+}
+
 .homepage-title {
   font-weight: 700;
   font-size: 12px;

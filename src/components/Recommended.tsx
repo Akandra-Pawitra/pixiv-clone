@@ -2,24 +2,31 @@ import '../assets/css/Recommended.css'
 import artworkMeta from '../assets/metadata/artworks.json'
 import artistMeta from '../assets/metadata/artists.json'
 import { getDownloadURL } from "firebase/storage"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
   getRef,
   getArtistName,
   getArtistProfileRef
 } from '../module/metadata'
+import fav1 from '../assets/images/favourite1.svg'
+import fav2 from '../assets/images/favourite2.svg'
 
 const renderRow = (art: ArtMetadata): React.ReactNode => {
+  const [fav, setFav] = useState(false)
+
   const artist = getArtistName(art.artist, artistMeta)
   const artRef = getRef(art.preview)
   const profileRef = getArtistProfileRef(art.artist, artistMeta)
   const imgId = `${art.id}-recommend-preview`
+  const favId = `${art.id}-recommend-fav`
   const profileId = `${art.artist}-${art.id}`
 
   useEffect(() => {
     getDownloadURL(artRef).then((url) => {
       const img = document.getElementById(imgId)
+      const fav = document.getElementById(favId)
       img?.setAttribute('src', url)
+      fav?.classList.remove('hidden')
     })
 
     if (profileRef) {
@@ -31,8 +38,16 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
   }, [])
   return (
     <div key={art.id} className='artrow-item'>
-      <div className='artrow-image'>
-        <img id={imgId} className="curved-corner" alt={`${art.id}`} />
+      <div className='artrow-image relative'>
+        <img
+          id={imgId}
+          className="curved-corner"
+          alt={`${art.id}`} />
+        <img
+          id={favId}
+          src={fav ? fav2 : fav1}
+          onClick={() => { fav ? setFav(false) : setFav(true) }}
+          className='homepage-fav absolute hidden' />
       </div>
       <div className='artrow-info'>
         <div className='homepage-title artrow-title'>

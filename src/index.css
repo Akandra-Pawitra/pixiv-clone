@@ -43,3 +43,15 @@ p {
 .curved-corner {
   border-radius: 8px;
 }
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}

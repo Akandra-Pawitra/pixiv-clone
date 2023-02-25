@@ -30,8 +30,35 @@
   height: fit-content;
 }
 
+.rank-image span {
+  text-align: center;
+  line-height: 30px;
+  font-weight: bolder;
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+}
+
+#rank-image-1 {
+  background-color: #d6ba49;
+}
+
+#rank-image-2 {
+  background-color: #858585;
+}
+
+#rank-image-3 {
+  background-color: #c8a17e;
+}
+
+.rank-span {
+  background-color: #8f8d88;
+}
+
 .rank-image,
-.rank-image img {
+.rank-image img:first-of-type {
   width: 250px;
   height: 250px;
 }

@@ -55,3 +55,12 @@ export const getArtistProfileRef = (id: number, arr: ArtistMetadata[]) => {
     console.log(error)
   }
 }
+
+export const getRank = (id: number, arr: number[]): number => {
+  const rank = arr.indexOf(id)
+  if (rank !== -1) {
+    return rank
+  } else {
+    throw Error('Artwork does not appear in rank')
+  }
+}
