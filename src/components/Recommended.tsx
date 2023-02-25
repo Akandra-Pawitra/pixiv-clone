@@ -1,71 +1,38 @@
 import '../assets/css/Recommended.css'
 import artworkMeta from '../assets/metadata/artworks.json'
 import artistMeta from '../assets/metadata/artists.json'
-import { ref, getDownloadURL } from "firebase/storage"
+import { getDownloadURL } from "firebase/storage"
 import { useEffect } from 'react'
-import { storage } from '../main'
-
-const getRef = (path: string) => {
-  return (ref(storage, path))
-}
-
-const getArtistIndex = (id: number): number => {
-  let index = -1
-  const arr = artistMeta
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].id === id) {
-      index = i
-      break
-    } else continue
-  }
-  return index
-}
-
-const getArtistName = (id: number): string => {
-  try {
-    const artist = artistMeta
-    const index = getArtistIndex(id)
-    const name = artist[index].name
-    return name
-  } catch (error) {
-    console.log(error)
-    return 'john'
-  }
-}
-
-const getArtistProfileRef = (id: number) => {
-  try {
-    const artist = artistMeta
-    const index = getArtistIndex(id)
-    const path = artist[index].pixiv.image
-    return (getRef(path))
-  } catch (error) {
-    console.log(error)
-  }
-}
+import {
+  getRef,
+  getArtistName,
+  getArtistProfileRef
+} from '../module/metadata'
 
 const renderRow = (art: ArtMetadata): React.ReactNode => {
+  const artist = getArtistName(art.artist, artistMeta)
+  const artRef = getRef(art.preview)
+  const profileRef = getArtistProfileRef(art.artist, artistMeta)
+  const imgId = `${art.id}-recommend-preview`
+  const profileId = `${art.artist}-${art.id}`
+
   useEffect(() => {
-    const artRef = getRef(art.preview)
     getDownloadURL(artRef).then((url) => {
-      const id = `${art.id}-preview`
-      const img = document.getElementById(id)
+      const img = document.getElementById(imgId)
       img?.setAttribute('src', url)
     })
 
-    const profileRef = getArtistProfileRef(art.artist)
     if (profileRef) {
       getDownloadURL(profileRef).then((url) => {
-        const id = `${art.artist}-${art.id}`
-        const img = document.getElementById(id)
+        const img = document.getElementById(profileId)
         img?.setAttribute('src', url)
       })
     }
   }, [])
   return (
     <div key={art.id} className='artrow-item'>
-      <div className='artrow-image `${art.id}-preview`'>
-        <img id={`${art.id}-preview`} className="curved-corner" alt={`${art.id}`} />
+      <div className='artrow-image'>
+        <img id={imgId} className="curved-corner" alt={`${art.id}`} />
       </div>
       <div className='artrow-info'>
         <div className='artrow-title'>
@@ -73,10 +40,10 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
         </div>
         <div className='artrow-artist flex'>
           <div className="artrow-artist-profile">
-            <img id={`${art.artist}-${art.id}`} />
+            <img id={profileId} />
           </div>
           <div className="artrow-artist-name">
-          {getArtistName(art.artist)}
+            {artist}
           </div>
         </div>
       </div>
