@@ -2,6 +2,7 @@ import Navigation from "../components/Navigation"
 import '../assets/css/Homepage.css'
 import Selection from "../components/Selection"
 import Recommended from "../components/Recommended"
+import Rank from "../components/Rank"
 
 const Homepage: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const Homepage: React.FC = () => {
       <main className="content">
         <Selection />
         <Recommended />
-        <div id="rank"></div>
+        <Rank />
       </main>
     </div>
   )

@@ -5,6 +5,21 @@ export const getRef = (path: string) => {
   return (ref(storage, path))
 }
 
+export const getArtMetadata = (id: number, arr: ArtMetadata[]): ArtMetadata => {
+  let index = -1
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].id === id) {
+      index = i
+      break
+    } else continue
+  }
+  if (index !== -1) {
+    return (arr[index])
+  } else {
+    throw Error('Artwork not found')
+  }
+}
+
 export const getArtistIndex = (id: number, arr: ArtistMetadata[]): number => {
   let index = -1
   for (let i = 0; i < arr.length; i++) {

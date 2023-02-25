@@ -1,0 +1,18 @@
+#rank {
+  width: 100%;
+  height: fit-content;
+}
+
+#rank-wrapper {
+  overflow: scroll;
+}
+
+#rank-row {
+  width: max-content;
+  flex-wrap: nowrap;
+}
+
+.rank-item {
+  width: 250px;
+  height: 300px;
+}
