@@ -35,14 +35,14 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
         <img id={imgId} className="curved-corner" alt={`${art.id}`} />
       </div>
       <div className='artrow-info'>
-        <div className='artrow-title'>
+        <div className='homepage-title artrow-title'>
           {art.title}
         </div>
         <div className='artrow-artist flex'>
-          <div className="artrow-artist-profile">
+          <div className="homepage-artist-profile">
             <img id={profileId} />
           </div>
-          <div className="artrow-artist-name">
+          <div className="homepage-artist-name">
             {artist}
           </div>
         </div>

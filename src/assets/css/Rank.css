@@ -3,8 +3,20 @@
   height: fit-content;
 }
 
+#rank-title {
+  height: 20px;
+  font-size: 12px;
+}
+
+#rank-date {
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 #rank-wrapper {
   overflow: scroll;
+  padding: 16px 0;
 }
 
 #rank-row {
@@ -13,6 +25,24 @@
 }
 
 .rank-item {
+  margin-right: 20px;
   width: 250px;
-  height: 300px;
+  height: fit-content;
+}
+
+.rank-image,
+.rank-image img {
+  width: 250px;
+  height: 250px;
+}
+
+.rank-artist-profile,
+.rank-artist-profile img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.rank-artist-name {
+  width: max-content;
 }

@@ -12,40 +12,13 @@
   font-weight: bold;
 }
 
-.artrow-image {
+.artrow-image,
+.artrow-image img {
+  width: 180px;
   height: 180px;
 }
 
-.artrow-image,
 .artrow-info,
 .artrow-title {
   width: 180px;
-}
-
-.artrow-title {
-  font-weight: 700;
-  font-size: 12px;
-  height: 30px;
-  line-height: 30px;
-}
-
-.artrow-title,
-.artrow-artist-name {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.artrow-artist-profile,
-.artrow-artist-profile img {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.artrow-artist-name {
-  margin-left: 5px;
-  font-size: 12px;
-  height: 24px;
-  line-height: 24px;
 }

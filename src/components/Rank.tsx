@@ -1,9 +1,8 @@
 import '../assets/css/Rank.css'
 import artworkMeta from '../assets/metadata/artworks.json'
 import artistMeta from '../assets/metadata/artists.json'
-import { ref, getDownloadURL } from "firebase/storage"
+import { getDownloadURL } from "firebase/storage"
 import { useEffect } from 'react'
-import { storage } from '../main'
 import {
   getRef,
   getArtMetadata,
@@ -41,18 +40,18 @@ const renderRank = (id: number): React.ReactNode => {
   }, [])
   return (
     <div key={id} className="rank-item">
-      <div className="rank-image">
-        <img id={imageId} alt={`${id}`}/>
+      <div className="rank-image curved-corner">
+        <img id={imageId} className='curved-corner' alt={`${id}`}/>
       </div>
       <div className="rank-info">
-         <div className='rank-title'>
+         <div className='homepage-title'>
           {title}
         </div>
         <div className='rank-artist flex'>
-          <div className="rank-artist-profile">
+          <div className="homepage-artist-profile">
             <img id={profileId}/>
           </div>
-          <div className="rank-artist-name">
+          <div className="homepage-artist-name rank-artist-name">
             {artist}
           </div>
         </div>
