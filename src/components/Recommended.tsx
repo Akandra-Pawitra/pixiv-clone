@@ -10,6 +10,7 @@ import {
 } from '../module/metadata'
 import fav1 from '../assets/images/favourite1.svg'
 import fav2 from '../assets/images/favourite2.svg'
+import { Link } from 'react-router-dom'
 
 const renderRow = (art: ArtMetadata): React.ReactNode => {
   const [fav, setFav] = useState(false)
@@ -39,28 +40,34 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
   return (
     <div key={art.id} className='artrow-item'>
       <div className='artrow-image relative'>
-        <img
-          id={imgId}
-          className="curved-corner"
-          alt={`${art.id}`} />
+        <Link to={`artwork/${art.id}`}>
+          <img
+            id={imgId}
+            className="artrow-artwork curved-corner"
+            alt={`${art.id}`} />
+        </Link>
         <img
           id={favId}
           src={fav ? fav2 : fav1}
           onClick={() => { fav ? setFav(false) : setFav(true) }}
           className='homepage-fav absolute hidden' />
-      </div>
+        </div>
       <div className='artrow-info'>
-        <div className='homepage-title artrow-title'>
-          {art.title}
-        </div>
-        <div className='artrow-artist flex'>
-          <div className="homepage-artist-profile">
-            <img id={profileId} />
+        <Link to={`artwork/${art.id}`}>
+          <div className='homepage-title artrow-title'>
+            {art.title}
           </div>
-          <div className="homepage-artist-name">
-            {artist}
+        </Link>
+        <Link to='redirect'>
+          <div className='artrow-artist flex'>
+            <div className="homepage-artist-profile">
+              <img id={profileId} />
+            </div>
+            <div className="homepage-artist-name">
+              {artist}
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   )

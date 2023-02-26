@@ -4,12 +4,15 @@ import inbox from '../assets/images/inbox.svg'
 import notif from '../assets/images/notif.svg'
 import account from '../assets/images/no_profile.png'
 import '../assets/css/Navigation.css'
+import { Link } from 'react-router-dom'
 
 const Navigation: React.FC = () => {
   return (
     <nav className='flex'>
       <div id='logo' className='nav-item flex'>
-        <img src={pixiv} width='82px' height='32px' />
+        <Link to='/'>
+          <img src={pixiv} width='82px' height='32px' />
+        </Link>
       </div>
       <div id='search-container' className='center-item nav-item'>
         <div id='search-box' className='flex charcoal curved-corner'>

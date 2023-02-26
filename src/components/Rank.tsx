@@ -10,6 +10,7 @@ import {
   getArtistProfileRef,
   getRank
 } from '../module/metadata'
+import { Link } from 'react-router-dom'
 import fav1 from '../assets/images/favourite1.svg'
 import fav2 from '../assets/images/favourite2.svg'
 
@@ -52,12 +53,14 @@ const renderRank = (id: number): React.ReactNode => {
   return (
     <div key={id} className="rank-item">
       <div className="rank-image relative">
-        <span
-          id={rankId}
-          className={ rank < 4 ? 'absolute hidden' : 'absolute hidden rank-span'} >
-          {rank}
-        </span>
-        <img id={imageId} className='curved-corner' alt={`${id}`}/>
+        <Link to={`artwork/${id}`}>
+          <span
+            id={rankId}
+            className={ rank < 4 ? 'absolute hidden' : 'absolute hidden rank-span'} >
+            {rank}
+          </span>
+          <img id={imageId} className='rank-artwork curved-corner' alt={`${id}`}/>
+        </Link>
         <img
           id={favId}
           src={fav ? fav2 : fav1}
@@ -65,17 +68,21 @@ const renderRank = (id: number): React.ReactNode => {
           className='homepage-fav absolute hidden' />
       </div>
       <div className="rank-info">
-         <div className='homepage-title'>
-          {metadata.title}
-        </div>
-        <div className='rank-artist flex'>
-          <div className="homepage-artist-profile">
-            <img id={profileId}/>
+        <Link to={`artwork/${id}`}>
+          <div className='homepage-title'>
+            {metadata.title}
           </div>
-          <div className="homepage-artist-name rank-artist-name">
-            {artist}
+        </Link>
+        <Link to='redirect'>
+          <div className='rank-artist flex'>
+            <div className="homepage-artist-profile">
+              <img id={profileId}/>
+            </div>
+            <div className="homepage-artist-name rank-artist-name">
+              {artist}
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   )

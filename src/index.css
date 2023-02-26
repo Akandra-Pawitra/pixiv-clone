@@ -17,6 +17,11 @@ body {
   padding: 0 100px;
 }
 
+a {
+  color: rgba(255, 255, 255, 0.87);
+  text-decoration: none;
+}
+
 p {
   cursor: default;
 }

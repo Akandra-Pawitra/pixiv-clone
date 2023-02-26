@@ -13,7 +13,7 @@
 }
 
 .artrow-image,
-.artrow-image img:first-of-type {
+.artrow-artwork {
   width: 180px;
   height: 180px;
 }

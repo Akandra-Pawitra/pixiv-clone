@@ -58,7 +58,7 @@
 }
 
 .rank-image,
-.rank-image img:first-of-type {
+.rank-artwork{
   width: 250px;
   height: 250px;
 }
