@@ -3,10 +3,12 @@ import artworkMeta from '../assets/metadata/artworks.json'
 import artistMeta from '../assets/metadata/artists.json'
 import { getDownloadURL } from "firebase/storage"
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   getRef,
   getArtistName,
-  getArtistProfileRef
+  getArtistProfileRef,
+  getPixivLink
 } from '../module/metadata'
 import fav1 from '../assets/images/favourite1.svg'
 import fav2 from '../assets/images/favourite2.svg'
@@ -14,6 +16,7 @@ import { Link } from 'react-router-dom'
 
 const renderRow = (art: ArtMetadata): React.ReactNode => {
   const [fav, setFav] = useState(false)
+  const navigate = useNavigate()
 
   const artist = getArtistName(art.artist, artistMeta)
   const artRef = getRef(art.preview)
@@ -21,6 +24,8 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
   const imgId = `${art.id}-recommend-preview`
   const favId = `${art.id}-recommend-fav`
   const profileId = `${art.artist}-${art.id}`
+  const pixivLink = getPixivLink(art.artist, artistMeta)
+  const redirectPixiv = () => navigate('/redirect', {state: {link: pixivLink}})
 
   useEffect(() => {
     getDownloadURL(artRef).then((url) => {
@@ -58,7 +63,7 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
             {art.title}
           </div>
         </Link>
-        <Link to='redirect'>
+        <div onClick={redirectPixiv}>
           <div className='artrow-artist flex'>
             <div className="homepage-artist-profile">
               <img id={profileId} />
@@ -67,7 +72,7 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
               {artist}
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   )

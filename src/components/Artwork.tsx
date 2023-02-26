@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import { getDownloadURL } from "firebase/storage"
+import { useNavigate } from "react-router-dom"
 import {
   getRef,
   getArtistName,
   getArtistProfileRef,
-  getFanboxRef
+  getFanboxRef,
+  getPixivLink,
+  getFanboxLink
 } from "../module/metadata"
 import artistMeta from "../assets/metadata/artists.json"
 import likeSvg from "../assets/images/like.svg"
@@ -20,15 +22,20 @@ const Artwork: React.FC<{
 }> = ({ metadata }) => {
   const [liked, setLiked] = useState(false)
   const [fav, setFav] = useState(false)
+  const navigate = useNavigate()
   const imgId = `${metadata.id}-artpage-full`
   const profileId = `${metadata.id}-artpage-profile`
   const fanboxId = `${metadata.artist}-fanbox`
   const artRef = getRef(metadata.full)
   const artist = getArtistName(metadata.artist, artistMeta)
+  const pixivLink = getPixivLink(metadata.artist, artistMeta)
   const profileRef = getArtistProfileRef(metadata.artist, artistMeta)
   const fanboxRef = getFanboxRef(metadata.artist, artistMeta)
+  const fanboxLink = getFanboxLink(metadata.artist, artistMeta)
   const orientation = metadata.height > metadata.width ? 'portrait' : 'landscape'
-
+  const redirectPixiv = () => navigate('/redirect', {state: {link: pixivLink}})
+  const redirectFanbox = () => navigate('/redirect', {state: {link: fanboxLink}})
+  
   useEffect(() => {
     getDownloadURL(artRef).then((url) => {
       const img = document.getElementById(imgId)
@@ -83,45 +90,41 @@ const Artwork: React.FC<{
         <div className="artpage-title">
           {metadata.title}
         </div>
-        <div className="artpage-info flex">
-          <Link to='redirect' className="flex">
+        <div onClick={redirectPixiv} className="artpage-info flex">
             <div className="artpage-profile">
               <img id={profileId + '0'}/>
             </div>
             <div className="artpage-artist">
               {artist}
             </div>
-          </Link>
           <div className="artpage-info-follow center-item">
             <button className="artpage-follow-button">+ Follow</button>
           </div>
         </div>
       </div>
       <div className="artpage-artist-container">
-        <div className="artpage-artist-info">
-          <Link to='redirect' className="flex">
+        <div onClick={redirectPixiv} className="artpage-artist-info flex">
             <div className="artpage-profile">
               <img id={profileId + '1'}/>
             </div>
             <div className="artpage-artist">
               {artist}
             </div>
-          </Link>
         </div>
         <div className="artpage-artist-follow">
           <button className="artpage-follow-button">Follow</button>
         </div>
         <div className="artpage-artist-fanbox">
           <p id="fanbox-title">pixivFanbox</p>
-          <Link to='redirect' className="curved-corner fanbox-container relative">
+          <div onClick={redirectFanbox} className="curved-corner fanbox-container relative">
             <img id={fanboxId} className="curved-corner" />
             <div className="fanbox-info-wrapper absolute flex">
               <p>{artist}のFANBOX</p>
               <button>Support</button>
             </div>
-          </Link>
         </div>
       </div>
+    </div>
     </div>
   )
 }

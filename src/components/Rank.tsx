@@ -4,12 +4,14 @@ import artistMeta from '../assets/metadata/artists.json'
 import rankMeta from '../assets/metadata/rank.json'
 import { getDownloadURL } from "firebase/storage"
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   getRef,
   getArtMetadata,
   getArtistName,
   getArtistProfileRef,
-  getRank
+  getRank,
+  getPixivLink
 } from '../module/metadata'
 import { Link } from 'react-router-dom'
 import fav1 from '../assets/images/favourite1.svg'
@@ -17,6 +19,7 @@ import fav2 from '../assets/images/favourite2.svg'
 
 const renderRank = (id: number): React.ReactNode => {
   const [fav, setFav] = useState(false)
+  const navigate = useNavigate()
 
   const metadata = getArtMetadata(id, artworkMeta)
   const rank = getRank(id, [...rankMeta]) + 1
@@ -25,6 +28,8 @@ const renderRank = (id: number): React.ReactNode => {
   const profileId = `${id}-rank-profile`
   const favId = `${id}-rank-fav`
   const artist = getArtistName(metadata.artist, artistMeta)
+  const pixivLink = getPixivLink(metadata.artist, artistMeta)
+  const redirectPixiv = () => navigate('/redirect', {state: {link: pixivLink}})
   const profileRef = getArtistProfileRef(metadata.artist, artistMeta)
   const artRef = getRef(metadata.preview)
   
@@ -68,7 +73,7 @@ const renderRank = (id: number): React.ReactNode => {
             {metadata.title}
           </div>
         </Link>
-        <Link to='redirect'>
+        <div onClick={redirectPixiv}>
           <div className='rank-artist flex'>
             <div className="homepage-artist-profile">
               <img id={profileId}/>
@@ -77,7 +82,7 @@ const renderRank = (id: number): React.ReactNode => {
               {artist}
             </div>
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   )

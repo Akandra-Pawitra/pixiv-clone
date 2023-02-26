@@ -1,4 +1,4 @@
-import { ref } from "firebase/storage"
+import { ref, StorageReference } from "firebase/storage"
 import { storage } from '../main'
 
 export const getRef = (path: string) => {
@@ -65,12 +65,20 @@ export const getRank = (id: number, arr: number[]): number => {
   }
 }
 
-export const getFanboxRef = (id: number, arr: ArtistMetadata[]) => {
-  try {
-    const index = getArtistIndex(id, arr)
-    const path = arr[index].fanbox.image
-    return (getRef(path))
-  } catch (error) {
-    console.log(error)
-  }
+export const getFanboxRef = (id: number, arr: ArtistMetadata[]): StorageReference => {
+  const index = getArtistIndex(id, arr)
+  const path = arr[index].fanbox.image
+  return (getRef(path))
+}
+
+export const getPixivLink = (id: number, arr: ArtistMetadata[]): string => {
+  const index = getArtistIndex(id, arr)
+  const path = arr[index].pixiv.link
+  return path
+}
+
+export const getFanboxLink = (id: number, arr: ArtistMetadata[]): string => {
+  const index = getArtistIndex(id, arr)
+  const path = arr[index].fanbox.link
+  return path
 }
