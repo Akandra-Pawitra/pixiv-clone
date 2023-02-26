@@ -14,7 +14,7 @@ const Selection: React.FC = () => {
         <p>Novels</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Selection
+export default Selection;

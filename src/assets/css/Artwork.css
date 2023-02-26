@@ -40,8 +40,8 @@
 }
 
 .artpage-action-button img {
- width: 30px;
- height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .artpage-title {
@@ -99,7 +99,7 @@
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
   font-size: 14px;
-  vertical-align: bottom;  
+  vertical-align: bottom;
 }
 
 .fanbox-container,
