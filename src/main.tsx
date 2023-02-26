@@ -1,12 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {
-  createBrowserRouter,
-  RouterProvider
-} from 'react-router-dom'
-import Artwork from './pages/Artwork'
-import Homepage from './pages/Homepage'
-import Redirect from './pages/Redirect'
+import Router from './Router'
 import './index.css'
 import { initializeApp } from "firebase/app"
 import { getStorage } from "firebase/storage"
@@ -23,26 +17,10 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const storage = getStorage()
 
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Homepage />
-  },
-  {
-    path: "artwork/:id",
-    element: <Artwork />
-  },
-  {
-    path: "redirect",
-    element: <Redirect />,
-  },
-])
-
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Router />
   </React.StrictMode>,
 )
