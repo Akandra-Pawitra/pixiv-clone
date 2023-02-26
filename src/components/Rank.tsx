@@ -1,6 +1,7 @@
 import '../assets/css/Rank.css'
 import artworkMeta from '../assets/metadata/artworks.json'
 import artistMeta from '../assets/metadata/artists.json'
+import rankMeta from '../assets/metadata/rank.json'
 import { getDownloadURL } from "firebase/storage"
 import { useEffect, useState } from 'react'
 import {
@@ -14,17 +15,11 @@ import { Link } from 'react-router-dom'
 import fav1 from '../assets/images/favourite1.svg'
 import fav2 from '../assets/images/favourite2.svg'
 
-const dailyRank = [
-  85672547, 99508232, 71646603, 86036732,
-  105565364, 103680674, 92076107, 67175703,
-  105029610, 48395655
-]
-
 const renderRank = (id: number): React.ReactNode => {
   const [fav, setFav] = useState(false)
 
   const metadata = getArtMetadata(id, artworkMeta)
-  const rank = getRank(id, dailyRank) + 1
+  const rank = getRank(id, [...rankMeta]) + 1
   const rankId = `rank-image-${rank}`
   const imageId = `${id}-rank-preview`
   const profileId = `${id}-rank-profile`
@@ -90,7 +85,7 @@ const renderRank = (id: number): React.ReactNode => {
 
 
 const Rank: React.FC = () => {
-  const row = dailyRank.map(renderRank)
+  const row = [...rankMeta].map(renderRank)
   return (
     <div id='rank'>
       <div id="rank-title">Daily rank</div>
