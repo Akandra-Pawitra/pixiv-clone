@@ -1,0 +1,28 @@
+#redirect-wrapper {
+  flex-direction: column;
+}
+
+#redirect-warning p {
+  display: inline;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+#redirect-link {
+  color: #0096fa;
+}
+
+#redirect-action {
+  width: 100%;
+  margin-top: 24px;
+  justify-content: space-evenly;
+}
+
+#redirect-action button {
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 12px 36px;
+  font-weight: 600;
+  font-size: 20px;
+  border: none;
+}
