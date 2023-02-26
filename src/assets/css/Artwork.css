@@ -1,0 +1,156 @@
+.artpage-container {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  column-gap: 24px;
+  width: 100%;
+}
+
+.landscape {
+  width: 850px;
+}
+
+.portrait {
+  height: 850px;
+}
+
+.artpage-art {
+  background-color: #333333;
+  padding-bottom: 30px;
+}
+
+.artpage-action {
+  justify-content: end;
+  height: 48px;
+}
+
+.artpage-action-button {
+  width: max-content;
+  height: 48px;
+  padding: 0 8px;
+}
+
+#artpage-like p {
+  margin: 0 0 0 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#artpage-liked-text {
+  color: #0096fa;
+}
+
+.artpage-action-button img {
+ width: 30px;
+ height: 30px;
+}
+
+.artpage-title {
+  height: 50px;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.artpage-info,
+.artpage-title {
+  padding-left: 24px;
+}
+
+.artpage-profile {
+  width: 50px;
+  height: 50px;
+}
+
+.artpage-profile img {
+  border-radius: 50%;
+}
+
+.artpage-artist {
+  margin: 0 12px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.artpage-follow-button {
+  background-color: #0096fa;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  height: 32px;
+}
+
+.artpage-info-follow button {
+  line-height: 14px;
+  width: 110px;
+  padding: 9px 25px;
+}
+
+.artpage-artist-follow button {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.artpage-artist-fanbox #fanbox-title {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  font-size: 14px;
+  vertical-align: bottom;  
+}
+
+.fanbox-container,
+.fanbox-container img {
+  width: 300px;
+  height: 180px;
+}
+
+.fanbox-info-wrapper {
+  background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  box-sizing: border-box;
+  width: 300px;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  left: 0;
+  bottom: 0;
+}
+
+.fanbox-info-wrapper p {
+  color: rgba(0, 0, 0, 0.8);
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 150px;
+}
+
+.fanbox-info-wrapper button {
+  margin-left: auto;
+  right: 0;
+  bottom: 0;
+  color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 16px;
+  display: flex;
+  flex: 0 0 auto;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: center;
+  justify-content: center;
+  width: 88px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(209, 255, 26) 0%, rgb(26, 209, 255) 100%) repeat scroll 0% 0%;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: bold;
+}

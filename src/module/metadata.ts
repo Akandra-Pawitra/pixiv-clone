@@ -64,3 +64,13 @@ export const getRank = (id: number, arr: number[]): number => {
     throw Error('Artwork does not appear in rank')
   }
 }
+
+export const getFanboxRef = (id: number, arr: ArtistMetadata[]) => {
+  try {
+    const index = getArtistIndex(id, arr)
+    const path = arr[index].fanbox.image
+    return (getRef(path))
+  } catch (error) {
+    console.log(error)
+  }
+}
