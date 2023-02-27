@@ -1,3 +1,4 @@
+import React from "react";
 import pixiv from "../assets/images/pixiv.svg";
 import magnifier from "../assets/images/magnifier.svg";
 import inbox from "../assets/images/inbox.svg";

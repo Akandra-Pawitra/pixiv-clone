@@ -1,3 +1,5 @@
+import React from "react";
+
 const Selection: React.FC = () => {
   return (
     <div id="selection" className="flex">

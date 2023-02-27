@@ -3,7 +3,7 @@ import artworkMeta from "../assets/metadata/artworks.json";
 import artistMeta from "../assets/metadata/artists.json";
 import rankMeta from "../assets/metadata/rank.json";
 import { getDownloadURL } from "firebase/storage";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   getRef,
@@ -21,11 +21,7 @@ const renderRank = (id: number): React.ReactNode => {
   const navigate = useNavigate();
 
   const metadata = getArtMetadata(id, artworkMeta);
-  const rank = getRank(id, [...rankMeta]) + 1;
-  const rankId = `rank-image-${rank}`;
-  const imageId = `${id}-rank-preview`;
-  const profileId = `${id}-rank-profile`;
-  const favId = `${id}-rank-fav`;
+  const rank = getRank(id, rankMeta) + 1;
   const artist = getArtistName(metadata.artist, artistMeta);
   const pixivLink = getPixivLink(metadata.artist, artistMeta);
   const redirectPixiv = () =>
@@ -35,18 +31,14 @@ const renderRank = (id: number): React.ReactNode => {
 
   useEffect(() => {
     getDownloadURL(artRef).then((url) => {
-      const rank = document.getElementById(rankId);
-      const img = document.getElementById(imageId);
-      const fav = document.getElementById(favId);
-      rank?.classList.remove("hidden");
-      img?.setAttribute("src", url);
-      fav?.classList.remove("hidden");
+      document.getElementById(`${id}-rank-preview`)?.setAttribute("src", url);
+      document.getElementById(`rank-image-${rank}`)?.classList.remove("hidden");
+      document.getElementById(`${id}-rank-fav`)?.classList.remove("hidden");
     });
 
     if (profileRef) {
       getDownloadURL(profileRef).then((url) => {
-        const img = document.getElementById(profileId);
-        img?.setAttribute("src", url);
+        document.getElementById(`${id}-rank-profile`)?.setAttribute("src", url);
       });
     }
   }, []);
@@ -55,7 +47,7 @@ const renderRank = (id: number): React.ReactNode => {
       <div className="rank-image relative">
         <Link to={`artwork/${id}`}>
           <span
-            id={rankId}
+            id={`rank-image-${rank}`}
             className={
               rank < 4 ? "absolute hidden" : "absolute hidden rank-span"
             }
@@ -63,13 +55,13 @@ const renderRank = (id: number): React.ReactNode => {
             {rank}
           </span>
           <img
-            id={imageId}
+            id={`${id}-rank-preview`}
             className="rank-artwork curved-corner"
             alt={`${id}`}
           />
         </Link>
         <img
-          id={favId}
+          id={`${id}-rank-fav`}
           src={fav ? fav2 : fav1}
           onClick={() => {
             fav ? setFav(false) : setFav(true);
@@ -84,7 +76,7 @@ const renderRank = (id: number): React.ReactNode => {
         <div onClick={redirectPixiv}>
           <div className="rank-artist flex">
             <div className="homepage-artist-profile">
-              <img id={profileId} />
+              <img id={`${id}-rank-profile`} />
             </div>
             <div className="homepage-artist-name rank-artist-name">
               {artist}

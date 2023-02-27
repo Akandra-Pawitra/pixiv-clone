@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import React from "react";
 import { getArtMetadata } from "../module/metadata";
 import Artwork from "../components/Artwork";
 import artworkMeta from "../assets/metadata/artworks.json";

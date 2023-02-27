@@ -2,7 +2,7 @@ import "../assets/css/Recommended.css";
 import artworkMeta from "../assets/metadata/artworks.json";
 import artistMeta from "../assets/metadata/artists.json";
 import { getDownloadURL } from "firebase/storage";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   getRef,
@@ -20,25 +20,25 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
   const artist = getArtistName(art.artist, artistMeta);
   const artRef = getRef(art.preview);
   const profileRef = getArtistProfileRef(art.artist, artistMeta);
-  const imgId = `${art.id}-recommend-preview`;
-  const favId = `${art.id}-recommend-fav`;
-  const profileId = `${art.artist}-${art.id}`;
   const pixivLink = getPixivLink(art.artist, artistMeta);
   const redirectPixiv = () =>
     navigate("/redirect", { state: { link: pixivLink } });
 
   useEffect(() => {
     getDownloadURL(artRef).then((url) => {
-      const img = document.getElementById(imgId);
-      const fav = document.getElementById(favId);
-      img?.setAttribute("src", url);
-      fav?.classList.remove("hidden");
+      document
+        .getElementById(`${art.id}-recommend-preview`)
+        ?.setAttribute("src", url);
+      document
+        .getElementById(`${art.id}-recommend-fav`)
+        ?.classList.remove("hidden");
     });
 
     if (profileRef) {
       getDownloadURL(profileRef).then((url) => {
-        const img = document.getElementById(profileId);
-        img?.setAttribute("src", url);
+        document
+          .getElementById(`${art.artist}-${art.id}`)
+          ?.setAttribute("src", url);
       });
     }
   }, []);
@@ -47,13 +47,13 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
       <div className="artrow-image relative">
         <Link to={`artwork/${art.id}`}>
           <img
-            id={imgId}
+            id={`${art.id}-recommend-preview`}
             className="artrow-artwork curved-corner"
             alt={`${art.id}`}
           />
         </Link>
         <img
-          id={favId}
+          id={`${art.id}-recommend-fav`}
           src={fav ? fav2 : fav1}
           onClick={() => {
             fav ? setFav(false) : setFav(true);
@@ -68,7 +68,7 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
         <div onClick={redirectPixiv}>
           <div className="artrow-artist flex">
             <div className="homepage-artist-profile">
-              <img id={profileId} />
+              <img id={`${art.artist}-${art.id}`} />
             </div>
             <div className="homepage-artist-name">{artist}</div>
           </div>
@@ -79,13 +79,9 @@ const renderRow = (art: ArtMetadata): React.ReactNode => {
 };
 
 const Recommended: React.FC = () => {
-  const arr0 = artworkMeta.slice(0, 6);
-  const arr1 = artworkMeta.slice(6, 12);
-  const arr2 = artworkMeta.slice(12, 18);
-
-  const row0 = arr0.map(renderRow);
-  const row1 = arr1.map(renderRow);
-  const row2 = arr2.map(renderRow);
+  const row0 = artworkMeta.slice(0, 6).map(renderRow);
+  const row1 = artworkMeta.slice(6, 12).map(renderRow);
+  const row2 = artworkMeta.slice(12, 18).map(renderRow);
 
   return (
     <div id="recommend">

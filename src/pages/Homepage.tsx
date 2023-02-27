@@ -1,3 +1,4 @@
+import React from "react";
 import "../assets/css/Homepage.css";
 import Selection from "../components/Selection";
 import Recommended from "../components/Recommended";

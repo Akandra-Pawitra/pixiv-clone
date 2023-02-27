@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import {
@@ -23,17 +23,13 @@ const Artwork: React.FC<{
   const [liked, setLiked] = useState(false);
   const [fav, setFav] = useState(false);
   const navigate = useNavigate();
-  const imgId = `${metadata.id}-artpage-full`;
-  const profileId = `${metadata.id}-artpage-profile`;
-  const fanboxId = `${metadata.artist}-fanbox`;
+
   const artRef = getRef(metadata.full);
   const artist = getArtistName(metadata.artist, artistMeta);
   const pixivLink = getPixivLink(metadata.artist, artistMeta);
   const profileRef = getArtistProfileRef(metadata.artist, artistMeta);
   const fanboxRef = getFanboxRef(metadata.artist, artistMeta);
   const fanboxLink = getFanboxLink(metadata.artist, artistMeta);
-  const orientation =
-    metadata.height > metadata.width ? "portrait" : "landscape";
   const redirectPixiv = () =>
     navigate("/redirect", { state: { link: pixivLink } });
   const redirectFanbox = () =>
@@ -41,31 +37,46 @@ const Artwork: React.FC<{
 
   useEffect(() => {
     getDownloadURL(artRef).then((url) => {
-      const img = document.getElementById(imgId);
-      img?.setAttribute("src", url);
+      document
+        .getElementById(`${metadata.id}-artpage-full`)
+        ?.setAttribute("src", url);
     });
 
     if (profileRef) {
       getDownloadURL(profileRef).then((url) => {
-        const img0 = document.getElementById(profileId + "0");
-        const img1 = document.getElementById(profileId + "1");
-        img0?.setAttribute("src", url);
-        img1?.setAttribute("src", url);
+        document
+          .getElementById(`${metadata.id}-artpage-profile0`)
+          ?.setAttribute("src", url);
+        document
+          .getElementById(`${metadata.id}-artpage-profile1`)
+          ?.setAttribute("src", url);
       });
     }
 
     if (fanboxRef) {
       getDownloadURL(fanboxRef).then((url) => {
-        const img = document.getElementById(fanboxId);
-        img?.setAttribute("src", url);
+        document
+          .getElementById(`${metadata.artist}-fanbox`)
+          ?.setAttribute("src", url);
       });
     }
   }, []);
   return (
     <div className="artpage-container">
       <div className="artpage-art curved-corner">
-        <div className={orientation + "artpage-art-image center-item"}>
-          <img id={imgId} className={orientation} />
+        <div
+          className={
+            metadata.height > metadata.width
+              ? "portrait artpage-art-image center-item"
+              : "landscape artpage-art-image center-item"
+          }
+        >
+          <img
+            id={`${metadata.id}-artpage-full`}
+            className={
+              metadata.height > metadata.width ? "portrait" : "landscape"
+            }
+          />
         </div>
         <div className="artpage-action flex">
           <div id="artpage-like" className="artpage-action-button center-item">
@@ -97,7 +108,7 @@ const Artwork: React.FC<{
         <div className="artpage-title">{metadata.title}</div>
         <div onClick={redirectPixiv} className="artpage-info flex">
           <div className="artpage-profile">
-            <img id={profileId + "0"} />
+            <img id={`${metadata.id}-artpage-profile0`} />
           </div>
           <div className="artpage-artist">{artist}</div>
           <div className="artpage-info-follow center-item">
@@ -108,7 +119,7 @@ const Artwork: React.FC<{
       <div className="artpage-artist-container">
         <div onClick={redirectPixiv} className="artpage-artist-info flex">
           <div className="artpage-profile">
-            <img id={profileId + "1"} />
+            <img id={`${metadata.id}-artpage-profile1`} />
           </div>
           <div className="artpage-artist">{artist}</div>
         </div>
@@ -121,7 +132,7 @@ const Artwork: React.FC<{
             onClick={redirectFanbox}
             className="curved-corner fanbox-container relative"
           >
-            <img id={fanboxId} className="curved-corner" />
+            <img id={`${metadata.artist}-fanbox`} className="curved-corner" />
             <div className="fanbox-info-wrapper absolute flex">
               <p>{artist}のFANBOX</p>
               <button>Support</button>
